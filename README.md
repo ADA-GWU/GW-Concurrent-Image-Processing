@@ -34,5 +34,8 @@ javac processImage.java
 java processImage mona.jpg 40 s
 ```
 
+## Original image
+![Original image](https://github.com/ADA-GWU/concurrency-Dashdamirli/blob/main/mona.jpg?raw=true)
+
 ## Result of the process
 ![Image of result](https://github.com/ADA-GWU/concurrency-Dashdamirli/blob/main/result.jpg?raw=true)
