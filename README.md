@@ -3,11 +3,11 @@
 The objective of the program is to pixelate image by finding the average color for the 
 (square size) x (square size) boxes and set the color of the whole square to this average color. <br><br>
 It will be done both by using single thread and multiple threads.
-The amount of threads that will be used is determined by the number of CPU cores times 2 or by optional argument.
+The amount of threads that will be used is determined by the number of CPU cores or by optional argument.
 <br>
 <br>
 The application takes 4 arguments (first 3 are required, and the last one is optional), filename, square size, the processing mode and number of threads to use (optional). 
-If number of threads won't be given as argument, then it will be equal to twice the number of CPU cores. 
+If number of threads won't be given as argument, then it will be equal to the number of CPU cores. 
 <br>
 <ul>
 <li>file name: the name of the graphic file of jpg format (no size constraints)</li>
