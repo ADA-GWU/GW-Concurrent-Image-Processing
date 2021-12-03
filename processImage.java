@@ -39,7 +39,7 @@ public class processImage {
 
             
             // number of threads that will be used
-            int threadCount = args.length!=4 ? cores*2 : Integer.parseInt(args[3]);
+            int threadCount = args.length==4 ? Integer.parseInt(args[3]) : cores;
             System.out.println("Number of threads: " + threadCount);
 
             JFrame frame=new JFrame();

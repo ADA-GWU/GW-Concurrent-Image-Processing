@@ -13,10 +13,10 @@ public class Parallel extends Thread{
     private final int idx;
     private final int threadCount;
 
-    public Parallel(int i,int c,BufferedImage image,int size, JFrame framex){
+    public Parallel(int i,int numThreads,BufferedImage image,int size, JFrame framex){
         super();
         idx =i;
-        threadCount = c;
+        threadCount = numThreads;
         img = image;
         squareSize = size;
         frame=framex;
@@ -106,6 +106,7 @@ public class Parallel extends Thread{
             // update frame icon
             ImageIcon icon=new ImageIcon(img);
             lbl.setIcon(icon);
+            frame.repaint();
             frame.add(lbl);
             frame.setVisible(true);
         }
