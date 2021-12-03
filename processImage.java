@@ -13,7 +13,8 @@ import javax.swing.JFrame;
 public class processImage {
 
     public static void main(String[] args) throws IOException {
-        // the application requires 3 arguments and all are needed to be provided
+        
+        // the application requires 3 arguments and all 3 are needed to be provided
         if(args.length!=3){
             System.out.println("Please provide three arguments: filename, square size and" +
                     " the processing mode (s/m)");
@@ -27,7 +28,7 @@ public class processImage {
         int squareSize = Integer.parseInt(args[1]);
 
         // read image
-        BufferedImage img =  ImageIO.read(new File(java.nio.file.Paths.get(System.getProperty("user.dir"),fileName).toString()));
+        BufferedImage img =  ImageIO.read(new File(fileName));
 
         // "m" for multi-thread, "s" for single-thread
         if("m".equals(args[2])){
@@ -70,6 +71,7 @@ public class processImage {
             }
 
         }else if("s".equals(args[2])){
+            // create new instance of Sequential
             Sequential s = new Sequential(img,squareSize);
 
             // call calculate method that modifies image
@@ -78,7 +80,7 @@ public class processImage {
 
         // save the result in "result.jpg" file
         try {
-            File outputfile = new File(java.nio.file.Paths.get(System.getProperty("user.dir"),"result.jpg").toString());
+            File outputfile = new File(java.nio.file.Paths.get("result.jpg").toString());
             ImageIO.write(img, "jpg", outputfile);
         } catch (IOException e) {
             e.printStackTrace();

@@ -22,7 +22,7 @@ public class Sequential {
 
         // loop through image to change pixel values
         for (int y = 0; y <= img.getHeight()-squareSize; y+=squareSize) {
-            // methods are doing the same thing, so Sequential class wil use Parallel class' modifyImage method
+            // methods are doing the same thing, so Sequential class will use Parallel class' modifyImage method
             Parallel.modifyImage(y, lbl, img, squareSize, frame);
         }
     }

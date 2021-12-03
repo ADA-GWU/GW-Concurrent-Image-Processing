@@ -44,7 +44,22 @@ public class Parallel extends Thread{
         }
     }
 
-    // method to modify image by changing pixel values
+    /**
+     * Changes the pixels of image from left to right,
+     * top to bottom. Updates label and frame, and 
+     * displays it.
+     * 
+     * An {@code ArrayOutOfBoundsException} may be thrown
+     * if the region is not in bounds.
+     * However, explicit bounds checking is not guaranteed.
+     *
+     * @param y           the Y coordinate
+     * @param lbl         the label that displays image
+     * @param img         image that will be modified
+     * @param squareSize  the size of the square for which the average pixel 
+     *                     color values will be calculated
+     * @param frame       the frame where label is added
+     */
     public static void modifyImage(int y, JLabel lbl, BufferedImage img, int squareSize, JFrame frame) {
         int x,sumReds,sumBlues,sumGreens,sumAlphas,avgReds,avgGreens,avgBlues,avgAlphas,i,j,p;
 

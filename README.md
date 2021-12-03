@@ -1,6 +1,6 @@
 # Concurrent Image Processing
 
-The object of the program is to pixelate image by finding the average color for the 
+The objective of the program is to pixelate image by finding the average color for the 
 (square size) x (square size) boxes and set the color of the whole square to this average color. <br><br>
 It will be done both by using single thread and multiple threads.
 The amount of threads that will be used is determined by the number of CPU cores divided by 2.
@@ -17,7 +17,7 @@ The process of pixelation will be shown in real time and final result will be sa
 
 The language of choice is **Java** for the support for physical level concurrency despite no previous experience.
 
-## An example to run the application
+## How to run the application
 <ul>
 <li> Compile the application: 
 </ul>
