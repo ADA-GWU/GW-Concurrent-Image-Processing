@@ -15,7 +15,7 @@ public class processImage {
     public static void main(String[] args) throws IOException {
         
         // the application requires 3 arguments and all 3 are needed to be provided
-        if(args.length!=3){
+        if(args.length<3){
             System.out.println("Please provide three arguments: filename, square size and" +
                     " the processing mode (s/m)");
             return;
@@ -37,21 +37,23 @@ public class processImage {
             int cores = Runtime.getRuntime().availableProcessors();
             System.out.println("Number of cores: " + cores);
 
-            // cores/2 number of threads will be used
-            System.out.println("Number of threads: " + cores/2);
+            
+            // number of threads that will be used
+            int threadCount = args.length!=4 ? cores*2 : Integer.parseInt(args[3]);
+            System.out.println("Number of threads: " + threadCount);
 
             JFrame frame=new JFrame();
 
-            // create cores/2 threads
+            // create threadCount threads
             ArrayList<Parallel> t = new ArrayList<>();
-            for(i=0;i<cores/2;i++){
-                Parallel parallel = new Parallel(i,cores/2,img,squareSize,frame);
+            for(i=0;i<threadCount;i++){
+                Parallel parallel = new Parallel(i,threadCount,img,squareSize,frame);
                 t.add(parallel);
             }
 
             // start threads
             try{
-                for(i=0;i<cores/2;i++){
+                for(i=0;i<threadCount;i++){
                     t.get(i).start();
                 }
             }
@@ -62,7 +64,7 @@ public class processImage {
 
             // join threads
             try{
-                for(i=0;i<cores/2;i++){
+                for(i=0;i<threadCount;i++){
                     t.get(i).join();
                 }
             }
