@@ -85,10 +85,10 @@ public class processImage {
             s.calculate();
         }
 
-        // save the result in "result.jpg" file
+        // save the result in "result.png" file
         try {
-            File outputfile = new File(java.nio.file.Paths.get("result.jpg").toString());
-            ImageIO.write(img, "jpg", outputfile);
+            File outputfile = new File(java.nio.file.Paths.get("result.png").toString());
+            ImageIO.write(img, "png", outputfile);
         } catch (IOException e) {
             e.printStackTrace();
         }

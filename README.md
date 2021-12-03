@@ -16,7 +16,9 @@ If number of threads won't be given as argument, then it will be equal to the nu
 <li>number of threads (optional)</li>
 </ul>
 
-The process of pixelation will be shown in real time and final result will be saved to **result.jpg** file.<br>
+The process of pixelation will be shown in real time and final result will be saved to **result.png** file. The reason it is saved to '.png' file rather than '.jpg'
+is that ```ImageIO.write``` function did not save image in '.jpg' format when it was scaled, whereas '.png' worked just fine. It can still be saved as '.jpg',
+but for that we need to change name of 'fullImage' variable to 'img' and not call ```scaleImage``` function at all.<br>
 
 The language of choice is **Java** for the support for physical level concurrency despite no previous experience.
 
