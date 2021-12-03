@@ -1,5 +1,10 @@
 import java.util.*;
 import java.awt.image.BufferedImage;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.Image;
+import java.awt.Graphics2D;
+
 
 import javax.imageio.ImageIO;
 import java.io.File;
@@ -27,8 +32,35 @@ public class processImage {
         String fileName = args[0];
         int squareSize = Integer.parseInt(args[1]);
 
+        // get window size to scale the image accordingly
+        Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+        
+        // screenWidth will store the width of the screen
+        int screenWidth = (int)size.getWidth();
+        
+        // screenHeight will store the height of the screen
+        int screenHeight = (int)size.getHeight();
+
         // read image
-        BufferedImage img =  ImageIO.read(new File(fileName));
+        BufferedImage fullImage =  ImageIO.read(new File(fileName));
+
+        // calculate the width and hight ratio, and use the smaller one to scale image
+        double widthRatio = (float)screenWidth / (float) fullImage.getWidth();
+        double heightRatio = (float) screenHeight / (float) fullImage.getHeight();
+        double ratio = Math.min(widthRatio, heightRatio);
+
+        // get the new width and height
+        int w = (int) (fullImage.getWidth()* ratio);
+        int h = (int) (fullImage.getHeight() * ratio);
+
+        // create new scaled image
+        Image temp = fullImage.getScaledInstance(w, h, Image.SCALE_SMOOTH);
+        BufferedImage img = new BufferedImage(w,h,BufferedImage.TYPE_INT_ARGB);
+
+        // draw our image on newly created image
+        Graphics2D graphics2D = img.createGraphics();
+        graphics2D.drawImage(temp, 0, 0, null);
+        graphics2D.dispose();
 
         // "m" for multi-thread, "s" for single-thread
         if("m".equals(args[2])){
